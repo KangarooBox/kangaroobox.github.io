@@ -1,0 +1,12 @@
+---
+layout: post
+title: Image ReGeneration At Scale
+date: '2013-04-19T12:51:00.001-04:00'
+author: Richard Hurt
+tags: 
+modified_time: '2013-04-19T12:51:16.209-04:00'
+blogger_id: tag:blogger.com,1999:blog-5693054744995313095.post-4488071571890817394
+blogger_orig_url: http://kangaroobox.blogspot.com/2013/04/image-regeneration-at-scale.html
+---
+
+<h2>Introduction</h2>So, at work we have lots of images and those images need thumbnails.  Lots of them.  Generally, we create the thumbnails when the customer uploads the image in the first place and everything is golden.  However, due to bad planning and maintenance the hard drive that was storing these thumbnails decided to take a little holiday and we had no backup.  Doh!  Luckily, most of the original customer images were tucked away safely in Amazon's S3 system and we could regenerate the thumbnails from that.  <br /><h2>It's gonna be easy...</h2><div>Well, you would think that generating thumbnails from images you already have is no problem. &nbsp;Whip up a little code to read the images, generate the thumbnails, and store them. &nbsp;Simple! &nbsp;If only it were that simple. &nbsp;This blog post goes over a couple of things I've learned this week about doing things at scale.</div><h2>What went right?</h2><h2>What went wrong?</h2><div><br /></div>

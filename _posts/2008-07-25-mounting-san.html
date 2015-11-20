@@ -1,0 +1,15 @@
+---
+layout: post
+title: Mounting the SAN
+date: '2008-07-25T09:50:00.004-04:00'
+author: Richard Hurt
+tags:
+- raid
+- SAN
+- Coraid
+modified_time: '2008-07-25T10:15:24.033-04:00'
+blogger_id: tag:blogger.com,1999:blog-5693054744995313095.post-9189688267820214559
+blogger_orig_url: http://kangaroobox.blogspot.com/2008/07/mounting-san.html
+---
+
+After getting my Coraid SAN hardware up and running I was having trouble deciding on how to use it.  I mean it does the RAID stuff great but it doesn't have the ability to split up the space dynamically or shrink it at will.  For that I needed LVM (Logical Volume Management) so I installed the Debian LVM2 package and went to work. I found an excellent <a href="http://gagme.com/greg/linux/raid-lvm.php#lvm">resource</a> on the subject of Linux, LVM, &amp; RAID setup and followed it pretty closely.  The only changes I made were to the RAID portion and that was because I had the Coraid doing all my heavy lifting.<br /><br />So instead of using <code>mdadm</code> I created the RAID by typing the following line on the Coraid console.<br /><br /><code>make raid5 0.0-2</code><br /><br />Since I have 4 physical disks in my SAN at the moment, this gives me a single RAID5 LUN (Logical Unit Number) and a hot swappable spare.  This shows up on my Debian server as /dev/etherd/e0.0.  I then initialized my new device as a physical volume, added it to a pv group, and created my first logical volume.<br /><br />I am currently in the process of testing different file systems (JFS, ReiserFS, ex3) to find out which one performs the best and has the best reliability.  I'm also testing a hardware failure by yanking out a disk in the middle of some operations.  It should work fine and continue like nothing happened.  If it doesn't, I would rather find out now when I don't have real data on it instead of 6 months from now when it could really cause some problems.<br /><br />One more thing I found on another site was using a separate mirror with 3 disks as an off-site backup plan.  Mount 2 of the disks in a RAID1 configuration and dump all of your backup data there.  Then when you want to off-site your backups just yank one of the disks out and replace it with the spare.  By taking the freshly yanked disk home or to your Mom's house you have a backup that can survive almost anything.  Just do this 2-3 times a week and your golden.  <br /><br />I knew this SAN thing would come in handy...

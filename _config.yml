@@ -1,0 +1,12 @@
+# Site settings
+title: KangarooBox
+email: webmaster@kangaroobox.com
+description: We make IT simple!
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://www.kangaroobox.com" # the base hostname & protocol for your site
+twitter_username: kangaroobox
+github_username:  kangaroobox
+pagination: 5
+
+# Build settings
+markdown: kramdown

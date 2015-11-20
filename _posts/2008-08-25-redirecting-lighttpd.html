@@ -1,0 +1,15 @@
+---
+layout: post
+title: Redirecting... Lighttpd!
+date: '2008-08-25T06:13:00.003-04:00'
+author: Richard Hurt
+tags:
+- lighttpd
+- SilverStripe
+- redirect
+modified_time: '2008-08-25T06:22:57.159-04:00'
+blogger_id: tag:blogger.com,1999:blog-5693054744995313095.post-6761635826454157226
+blogger_orig_url: http://kangaroobox.blogspot.com/2008/08/redirecting-lighttpd.html
+---
+
+I've been fighting with <a href="http://www.lighttpd.net/">Lighttpd</a> for the past few days and I think I've finally won.  The problem was that I had old hosts hanging around the web from when KangarooBox first went live, and I wanted to get rid of them.  And by get rid of them I mean redirect them, permanently, to the www. host.  For example, the one big major FQDN that I wanted to squash is "mail.kangaroobox.com".  When we were just getting the company off the ground we need to test some thing really quickly so we just grabbed the first host name we found (that wasn't www).  It turns out that it got propagated much more widely than we had anticipated and Google got it's hands on it.  :(<br /><br />So now, thanks to the following bit of configuration code, everything seems to be working really well.  I post this so that future generations may learn from my mistakes.  Or I'm just following the Linus creed: "Backups are for wimps. Real men upload their data to an FTP site and have everyone else mirror it."  :)<br /><br /><pre><br />## Redirect to www.kangaroobox.com for SEO<br />$HTTP["host"] !~ "^www.kangaroobox.com" {<br /> url.redirect = (<br />   "^/(.*)" => "http://www.kangaroobox.com/$1"<br /> )<br />}<br />## Rewrite the URL for sapphire<br />$HTTP["host"] =~ "^www.kangaroobox.com" {<br /> url.rewrite-once = (<br />   "(?i)(/.*\.([A-Za-z0-9]+))(.*?)$" => "$0",<br />   "^/(.*?)(\?|$)(.*)" => "/sapphire/main.php?url=$1&amp;$3"<br /> )<br /> server.error-handler-404 = "/sapphire/main.php"<br />}<br /></pre>

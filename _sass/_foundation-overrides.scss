@@ -1,0 +1,21 @@
+/* Import fonts */
+@import url(http://fonts.googleapis.com/css?family=Play);
+
+/* Change top bar */
+.top-bar, .tab-bar {
+  background: $topbar-bg-color;
+  font-family: 'Play', sans-serif;
+}
+
+@media only screen and (min-width: 40.063em) {
+  .top-bar-section li:not(.has-form) a:not(.button) {
+    background: $topbar-bg-color;
+  }
+
+  .top-bar-section li:not(.has-form) a:not(.button):hover {
+    background: $topbar-bg-color-hover;
+  }
+}
+
+/* Fix GISTs */
+.gist table { table-layout: auto; }
