@@ -14,6 +14,10 @@ layout: default
         {{ content }}
       </article>
 
+      <article class="post-comments">
+        {% include comments.html %}
+      </article>
+
       <section>
         <tags class="right">
           Tags: {{ page.tags | array_to_sentence_string }}
