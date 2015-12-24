@@ -3,20 +3,35 @@ layout: default
 title: Blog
 permalink: posts/
 ---
+
+
 <div class="row posts">
-  <div class="large-12 columns">
+  <div class="large-2 columns">
+    <h3 class="subheader">Tags</h3>
+    {% assign tags = site.tags | sort %}
+    {% for tag in tags %}
+      {% assign tag_count = tag | last | size %}
+      {% if tag_count > 1 %}
+       <span class="site-tag">
+          <a href="/tag/{{ tag | first | slugify }}/"
+              style="font-size: {{ tag | last | size  |  times: 4 | plus: 80  }}%">
+                  {{ tag[0] | replace:'-', ' ' }} ({{ tag | last | size }})
+          </a>
+      </span>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="large-10 columns">
     {% for post in site.posts %}
       <div class="row">
         <div class="large-3 columns date">
           {{ post.date | date: "%b %d, %Y" }}
         </div>
-        <div class="large-6 columns details">
+        <div class="large-9 columns details">
           <p>
             <a href="{{ post.url }}">{{ post.title }}</a> -
             {{ post.excerpt | strip_html | truncatewords:25 }}
           </p>
-        </div>
-        <div class="large-3 columns date">
         </div>
       </div>
     {% endfor %}
