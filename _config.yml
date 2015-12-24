@@ -10,3 +10,7 @@ pagination: 5
 
 # Build settings
 markdown: kramdown
+
+# Customization
+gems:
+  - jekyll-gist
