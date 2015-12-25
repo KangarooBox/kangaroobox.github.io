@@ -3,6 +3,7 @@ layout: post
 title: AWS Key Management Service
 author: Richard Hurt
 tags: AWS KMS
+comments: true
 ---
 
 ![KMS Logo](https://d0.awsstatic.com/product-marketing/KMS/KMS_Benefit_Key.png "KMS Logo"){: .right}
