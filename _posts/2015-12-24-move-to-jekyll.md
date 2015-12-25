@@ -20,3 +20,5 @@ creating posts fun again.  The only thing it doesn't do well is dynamic content 
 also hooked up Disqus to handle comments and that seems to be working really well.
 
 Hopefully, I'll be posting more info on some AWS goodies (and other things) I'm currently working on.
+
+BTW: Merry Christmas/Happy Holidays!  :)
