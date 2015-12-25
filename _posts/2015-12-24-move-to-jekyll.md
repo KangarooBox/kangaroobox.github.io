@@ -1,6 +1,6 @@
 ---
 layout: post
-title: We've Moved to Jekyll
+title: KangarooWho‽ has moved to Jekyll!
 author: Richard Hurt
 tags: Github Jekyll
 comments: true
