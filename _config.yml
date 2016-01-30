@@ -7,7 +7,7 @@ url: "http://kangaroobox.com" # the base hostname & protocol for your site
 twitter_username: kangaroobox
 github_username:  kangaroobox
 pagination: 5
-permalink: /:year/:month/:day/:title
+permalink: /:year/:month/:day/:title.html
 
 # Build settings
 markdown: kramdown
