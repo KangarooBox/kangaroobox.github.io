@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Encrypting Secrets In CloudFormation
+title: Encrypting Secrets For CloudFormation
 author: Richard Hurt
 tags: cloudformation custom lambda aws secrets encryption
 comments: true
@@ -8,7 +8,8 @@ comments: true
 
 One of the great things about CloudFormation is the ability to store all of your configurations in Git (or some other version control software).  The downside is that several CFN (CloudFormation) resources require secret information which then gets stored in your VCS as well.  Things like creating RDS instances or IAM users require you to provide cleartext passwords in your template.  But I've found a way around that using Lambda and KMS to decrypt your secrets when the CFN stack is Created/Updated.
 
-First I created a [Lambda function](https://gist.github.com/rnhurt/67a32139ca03030741876be5d009fb9a) that accepts a [CFN Custom resource](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-custom-resources.html).  Here is the important part of the Lambda function that deals with decrypting the secret value:
+First, I created a [Lambda function](https://gist.github.com/rnhurt/67a32139ca03030741876be5d009fb9a) that accepts a [CFN Custom resource](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-custom-resources.html).  Below is a snippet of the Lambda Javascript showing the decryption of ciphertext using KMS:
+
 ```javascript
     let responseStatus = 'FAILED';
     let responseData = {};
