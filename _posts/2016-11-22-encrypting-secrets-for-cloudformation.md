@@ -39,6 +39,7 @@ When CFN calls the custom resource it passes in an AWS Region, some ciphertext b
 
 In the CFN template, you just have to use the correct Type (Custom::EncryptedValue) and fill in some Properties.  In order to get the plaintext value just use the "Fn::GetAtt" CFN function and name the attribute you want (i.e. "Plaintext").
 
+{% raw %}
 ```json
 "iamp{{this.Name}}": {
   "Type": "Custom::EncryptedValue",
@@ -59,4 +60,6 @@ In the CFN template, you just have to use the correct Type (Custom::EncryptedVal
   }
 }
 ```
+{% endraw %}
+
 _NOTE: I'm using the [CFN-Builder](https://github.com/KangarooBox/cfn-builder) engine to create these templates, which uses [Handlebars](http://handlebarsjs.com/) to create these CFN templates._ 
