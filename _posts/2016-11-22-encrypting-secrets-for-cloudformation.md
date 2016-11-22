@@ -40,21 +40,21 @@ When CFN calls the custom resource it passes in an AWS Region, some ciphertext b
 In the CFN template, you just have to use the correct Type (Custom::EncryptedValue) and fill in some Properties.  In order to get the plaintext value just use the "Fn::GetAtt" CFN function and name the attribute you want (i.e. "Plaintext").
 
 ```json
-"iamp{{this.Name}}":{
-  "Type":"Custom::EncryptedValue",
-  "Properties":{
-    "ServiceToken":"arn:aws:lambda:us-east-1:111222333:function:cfnEncryptedValue",
+"iamp{{this.Name}}": {
+  "Type": "Custom::EncryptedValue",
+  "Properties": {
+    "ServiceToken": "arn:aws:lambda:us-east-1:111222333:function:cfnEncryptedValue",
     "Region": { "Ref": "AWS::Region" },
-    "CiphertextBlob":"{{this.Password}}",
-    "EncryptionContext":{"Service":"IAM"}
+    "CiphertextBlob": "{{this.Password}}",
+    "EncryptionContext": { "Service":"IAM" }
   }
 },
 
-"iamu{{this.Name}}" : {
-  "Type" : "AWS::IAM::User",
-  "Properties" : {
+"iamu{{this.Name}}": {
+  "Type": "AWS::IAM::User",
+  "Properties": {
     "Password": { "Fn::GetAtt": ["iamp{{this.Name}}","Plaintext"] },
-    "Path" : "/{{this.Path}}",
+    "Path": "/{{this.Path}}",
     "UserName": "{{this.Name}}"
   }
 }
