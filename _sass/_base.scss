@@ -12,6 +12,10 @@ header { margin-top: 15px; }
   padding: 0.125rem 0.3125rem 0.0625rem;
 }
 
+.post pre code {
+  border-color: #f8f8f8;
+}
+
 .posts .date {
   text-align: right;
 }
