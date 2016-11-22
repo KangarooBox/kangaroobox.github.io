@@ -11,6 +11,7 @@ One of the great things about CloudFormation is the ability to store all of your
 First, I created a [Lambda function](https://gist.github.com/rnhurt/67a32139ca03030741876be5d009fb9a) that accepts a [CFN Custom resource](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-custom-resources.html).  Below is a snippet of the Lambda Javascript showing the decryption of ciphertext using KMS:
 
 ```javascript
+...    
     let responseStatus = 'FAILED';
     let responseData = {};
     var AWS = require('aws-sdk');
