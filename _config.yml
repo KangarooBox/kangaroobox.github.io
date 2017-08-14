@@ -13,5 +13,6 @@ permalink: /:year/:month/:day/:title.html
 markdown: kramdown
 
 # Customization
-gems:
+plugins:
   - jekyll-gist
+  - jekyll-sitemap
