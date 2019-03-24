@@ -234,34 +234,3 @@
         }
     }
 }
-
-.info, .success, .warning, .error {
-    margin: 10px 0px;
-    padding:12px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
-    border: solid 5px;
-    padding: 14px 20px;
-    color: white;
-}
-.post-content p.info {
-    background-color: #66ccff;
-    border-color: #0099e6;
-    text-shadow: 2px 2px #0099e6;
-}
-.post-content p.success {
-    background-color: #66ff66;
-    border-color: #00b300;
-    text-shadow: 2px 2px #00b300;
-}
-.post-content p.warning {
-    background-color: #ff9966;
-    border-color: #cc4400;
-    text-shadow: 2px 2px #cc4400;
-}
-.post-content p.error {
-    background-color: #ff4d4d;
-    border-color: #b30000;
-    text-shadow: 2px 2px #b30000;
-}
