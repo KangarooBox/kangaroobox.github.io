@@ -60,7 +60,7 @@ The resulting configuration should look something like this:
 Again, this guide assumes that you have Jenkins installed and running.
 
 {:.warning}
-Make sure you have the "Authorization" set to "Anyone can do anything" - locking yourself out of Jenkins is no fun!
+**Make sure you have the "Authorization" set to "Anyone can do anything" - locking yourself out of Jenkins is no fun!**
 
 Complete these steps:
 
